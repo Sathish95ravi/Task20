@@ -1,0 +1,98 @@
+1.package letcodeSathish;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Task20 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+ 
+		WebDriver driver=new ChromeDriver();
+	      String frdate = "20";
+	      String todate = "26";
+	      driver.get("https://jqueryui.com/datepicker/#date-range");
+	      // wait of 4 seconds
+	      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+	      // maximize browser
+	      driver.manage().window().maximize();
+	      // identify frame and switch to it
+	      WebElement e = driver.findElement(By.xpath("//*[@id='content']/iframe"));
+	      driver.switchTo().frame(e);
+	      // choose from date
+	      driver.findElement(By.xpath("//input[@id='from']")).click();
+	      Thread.sleep(1000);
+	      // choose month from dropdown
+	      WebElement m = driver
+	      .findElement(By.xpath("//div/select[@class='ui- datepicker-month']"));
+	      Select s = new Select(m);
+	      s.selectByVisibleText("Jan");
+	      Thread.sleep(1000);
+	      // select day
+	      driver.findElement(By.xpath("//td[not(contains(@class,'ui-datepicker- month'))]/a[text()='"+frdate+"']")).click();
+	      Thread.sleep(1000);
+	      // choose to date
+	      driver.findElement(By.xpath("//input[@id='to']")).click();
+	      Thread.sleep(1000);
+	      // choose month from dropdown
+	      WebElement n = driver
+	      .findElement(By.xpath("//div/select[@class='ui- datepicker-month']"));
+	      Select sel = new Select(n);
+	      sel.selectByVisibleText("Feb");
+	      Thread.sleep(1000);
+	      // select day
+	      driver.findElement(By.xpath("//td[not(contains(@class,'ui-datepicker- month'))]/a[text()='"+todate+"']")).click();
+	      Thread.sleep(1000);
+	
+	}
+	
+	
+	}
+
+2.package letcodeSathish;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Guvi {
+
+	public static void main(String[] args) throws InterruptedException {
+	WebDriver driver=new ChromeDriver();
+	
+	driver.get("https://www.guvi.in/register");
+	
+	driver.manage().window().maximize();
+	
+	driver.findElement(By.id("firstName")).sendKeys("Sathish");
+	
+	driver.findElement(By.id("lastName")).sendKeys("R");
+	
+	driver.findElement(By.id("emailInput")).sendKeys("sathish77@gmail.com");
+	
+	driver.findElement(By.id("passwordInput")).sendKeys("sathish@125");
+	
+	
+	driver.findElement(By.name("mobileNumberInput")).sendKeys("9098712255");
+	
+	driver.findElement(By.id("signup")).click();
+	
+	driver.findElement(By.xpath("//a[@class='nav-link  text-primary text-center px-4']")).click();
+	
+	driver.findElement(By.id("login_email")).sendKeys("sathish77@gmail.com");
+	
+	driver.findElement(By.id("login_password")).sendKeys("sathish@125");
+	
+	driver.findElement(By.xpath("//button[@type='submit']")).click();
+	
+	
+    driver.quit();
+
+}
+
+}
